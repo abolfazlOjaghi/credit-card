@@ -72,13 +72,13 @@ function App() {
   }
   const handleSubmit  = e => {
     e.preventDefault(),
-    (!errors.name && !errors.number && !errors.month && !errors.year && !errors.cvc) && setSubmitForm(true)
+    !(errors.name && errors.number && errors.month && errors.year && errors.cvc) && (formData.name && formData.number && formData.month && formData.year && formData.cvc) && setSubmitForm(true)
   }
   return (
-    <section className="w-screen h-screen flex max-lg:flex-col-reverse items-center justify-center gap-12">
+    <section className="flex items-center justify-center w-screen h-screen gap-12 max-lg:flex-col-reverse">
       {!submitForm ? 
       <form className="*:space-y-6 space-y-6 *:max-md:text-sm" onSubmit={handleSubmit}>
-        <div className="max-md:flex flex-col items-center">
+        <div className="flex-col items-center max-md:flex">
           {
             inputProps.map((props, index) => {
               return <Input key={index} {...props} handleChanges={handleChanges} handleBlur={handleBlur} />
@@ -95,9 +95,9 @@ function App() {
         <button className="bg-linear-to-r from-indigo-600 to-red-600 w-full py-1.5 rounded-xl text-white" type="submit">Confrim</button>
       </form>
       :
-      <div className="flex items-center flex-col transition-all">
+      <div className="flex flex-col items-center transition-all">
         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24" fill="none" stroke="#2b00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check-big-icon lucide-circle-check-big"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
-        <h2 className="text-white text-4xl">Thank You!</h2>
+        <h2 className="text-4xl text-white">Thank You!</h2>
       </div>
       }
       <div className="bg-linear-to-r from-indigo-600 to-red-600 rounded-xl max-md:w-[22rem] max-md:h-48 w-[29rem] h-56 text-white p-6 flex flex-col justify-between items-center">
