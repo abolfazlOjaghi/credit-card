@@ -71,8 +71,10 @@ function App() {
     }
   }
   const handleSubmit  = e => {
-    e.preventDefault(),
-    (errors.every(!item) && formData.every(item)) && setSubmitForm(true)
+    e.preventDefault();
+    const hasEmptyFields = Object.values(formData).some(value => value === "");
+    const hasErrors = Object.values(errors).some(error => error);
+    (!hasEmptyFields && !hasErrors) && setSubmitForm(true)
   }
   return (
     <section className="flex items-center justify-center w-screen h-screen gap-12 max-lg:flex-col-reverse">
