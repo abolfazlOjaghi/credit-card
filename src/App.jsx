@@ -72,7 +72,7 @@ function App() {
   }
   const handleSubmit  = e => {
     e.preventDefault(),
-    !(errors.name && errors.number && errors.month && errors.year && errors.cvc) && (formData.name && formData.number && formData.month && formData.year && formData.cvc) && setSubmitForm(true)
+    (errors.every(!item) && formData.every(item)) && setSubmitForm(true)
   }
   return (
     <section className="flex items-center justify-center w-screen h-screen gap-12 max-lg:flex-col-reverse">
